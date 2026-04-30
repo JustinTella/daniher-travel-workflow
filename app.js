@@ -846,6 +846,7 @@ async function init() {
   try {
     const sheetPatients = await fetchSheetPatients();
     patients = sheetPatients;
+    localStorage.setItem("daniher-patients-v1", JSON.stringify(patients.map(p => ({ id: p.id, name: p.name, stops: p.stops || [] }))));
     renderPatients();
 
     if (patients.length) {
